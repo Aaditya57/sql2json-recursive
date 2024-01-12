@@ -1,0 +1,37 @@
+# query:
+#   - name: A
+#     text: AX
+#   - query:
+#     - name: A1
+#       text: A1X
+#     - name: A2
+#       text: A2X
+#     - query:
+#       - name: A21
+#         text: A21X
+#       - name: A22
+#         text: A22X
+#       - query:
+#         - name: A221
+#           text: A221X
+#         - name: A222
+#           text: A22X
+
+
+query:
+  - name: country
+    text: SELECT ID, ISO, Name FROM Countries
+    query:
+      - name: state
+        text: SELECT id, code, name FROM states WHERE country_id = $ID
+#      - name: price
+        # query:
+        #   - name: product-attribute
+        #     text: select ITEM_ID, SHORT_WEB_DESC, ASHI_JEWELSOFT_DESC from itemmaster where ITEM_ID = 54
+        #   - name: product-category
+        #     text: select CATEGORY_NAME, SEQ_NUM from CategoryMaster, ItemCategoryLink where CategoryMaster.CATEGORY_ID = ItemCategoryLink.CATEGORY_ID and item_id = 54
+        #     query:
+        #       - name: product-attribute
+        #         text: select ITEM_ID, SHORT_WEB_DESC, ASHI_JEWELSOFT_DESC from itemmaster where ITEM_ID = 54
+        #       - name: product-category
+        #         text: select CATEGORY_NAME, SEQ_NUM from CategoryMaster, ItemCategoryLink where CategoryMaster.CATEGORY_ID = ItemCategoryLink.CATEGORY_ID and item_id = 54
