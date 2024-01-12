@@ -4,12 +4,6 @@ import warnings
 import pandas as pd 
 
 # Replace these values with your actual database connection details
-server_name = '192.168.88.71:3307'
-database_name = 'db_ad'
-username = 'root'
-password = 'a@no1Knows'
-
-
 host = '192.168.88.71'
 database = 'db_ad'
 user = 'root'
@@ -58,32 +52,3 @@ def getMySQLConnection():
         exit(0)
 
     return mysqlconnection 
-
-
-# try:
-#     # Attempt to establish a connection
-#     # connection = mysql.connector.connect(
-#     #     host=host,
-#     #     database=database,
-#     #     user=user,
-#     #     password=password,
-#     #     port=port
-#     # )
-#     connection = getMySQLConnection() 
-#     # If successful, print a success message
-#     if connection.is_connected():
-#         print("Connection to the database successful!")
-
-#         # Example: Execute a basic query
-#         cursor = connection.cursor()
-#         cursor.execute("SELECT version()")
-#         row = cursor.fetchone()
-#         print(f"Database version: {row[0]}")
-
-#         # Close the cursor and connection
-#         cursor.close()
-#         connection.close()
-
-# except mysql.connector.Error as err:
-#     # If there is an error, print the details
-#     print(f"Error: {err}")

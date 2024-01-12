@@ -1,24 +1,11 @@
 import yaml
 import json
-import logging
-import mysql.connector
 from datetime import datetime
 from decimal import Decimal
 import re
 import testing as test
 
-# Database connection details
-
-host = '192.168.88.71'
-database = 'db_ad'
-user = 'root'
-password = 'a@no1Knows'
-port = 3307
-
 log = test.getLogger() 
-
-
-
 class CustomJSONEncoder(json.JSONEncoder):
     """ Custom JSON Encoder that converts datetime objects to strings. """
     def default(self, obj):
@@ -149,15 +136,4 @@ with open('data.json', 'w') as file:
     log.info("writing to file data.json")
     json.dump(data, file, indent=4, cls=CustomJSONEncoder )
 
-# Execute queries and store results
-
-
-
-# Convert the results to JSON
-# json_results = json.dumps(process_query(data['query']), indent=4, cls=CustomJSONEncoder )
-
-# Print the JSON results
-# print(json_results)
-
-# Close the database connection
 
