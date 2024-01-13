@@ -2,13 +2,21 @@ import mysql.connector
 import logging
 import warnings
 import pandas as pd 
+from configparser import ConfigParser
+from mysql.connector import MySQLConnection
 
-# Replace these values with your actual database connection details
-host = '192.168.88.71'
-database = 'db_ad'
-user = 'root'
-password = 'a@no1Knows'
-port = 3307
+
+def read_db_config(filename='config.ini', section='mysql'):
+    parser = ConfigParser()
+    parser.read(filename)
+    db = {}  
+    if parser.has_section(section):
+        items = parser.items(section)
+        for item in items:
+            db[item[0]] = item[1]
+    else:
+        raise Exception('{0} not found in the {1} file'.format(section, filename))
+    return db 
 
 def log( string ): 
     log = getLogger() 
@@ -37,13 +45,8 @@ def getMySQLConnection():
     log = getLogger() 
     warnings.filterwarnings("ignore")
     try:
-        mysqlconnection = mysql.connector.connect( 
-            host=host,
-            database=database,
-            user=user,
-            password=password,
-            port=port
-        )
+        db_config = read_db_config()
+        mysqlconnection = MySQLConnection(**read_db_config())
         testcnt = pd.read_sql( "select CURRENT_TIMESTAMP() " , mysqlconnection ) 
         log.debug( testcnt.shape) 
     except mysql.connector.Error as error:
