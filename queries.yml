@@ -1,5 +1,6 @@
 
-#Example queries, replace the given queries with appropriate queries.
+#Example queries, replace the given queries with appropriate queries.\
+
 query:
   - name: country
     text: SELECT ID, ISO, Name FROM Countries

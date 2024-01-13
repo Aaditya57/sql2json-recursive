@@ -6,7 +6,7 @@ from configparser import ConfigParser
 from dotenv import load_dotenv
 import os
 
-# Replace these values with your actual database connection details
+
 load_dotenv()
 
 host = os.getenv("host")
@@ -32,7 +32,7 @@ def getLogger():
     
     # file_handler = logging.FileHandler(log_file)
     # file_handler.setFormatter(logging.Formatter(log_format))
-    # logger.addHandler(file_handler)    
+    # logger.addHandler(file_handler)     
     
     return logger 
 
