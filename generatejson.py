@@ -3,9 +3,9 @@ import json
 from datetime import datetime
 from decimal import Decimal
 import re
-import testing as test
+import db_Connection as dbconn
 
-log = test.getLogger() 
+log = dbconn.getLogger() 
 class CustomJSONEncoder(json.JSONEncoder):
     """ Custom JSON Encoder that converts datetime objects to strings. """
     def default(self, obj):
@@ -49,8 +49,8 @@ def getString(results, row, col_name):
 
 def executeQuery( sql_query ): 
     # Execute the query and store results in a list of dictionaries
-    test.log(f'executing : {sql_query}')
-    connection = test.getMySQLConnection()
+    dbconn.log(f'executing : {sql_query}')
+    connection = dbconn.getMySQLConnection()
     cursor = connection.cursor() 
     cursor.execute(sql_query)
     columns = [col[0] for col in cursor.description]
