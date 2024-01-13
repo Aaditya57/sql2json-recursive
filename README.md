@@ -13,3 +13,4 @@ create virtual Enviroment and install requirements.txt
 Add a jpeg/png/gif file here.
 
 ## Aaditya57
+Student of University of Virginia
