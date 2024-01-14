@@ -1,6 +1,5 @@
 # sql2json-recursive
-
-Generate JSON from SQL queries recursively 
+The program creates a json file of your mysql database using a recursive algorithm
 
 ## Getting Started
 
