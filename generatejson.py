@@ -5,6 +5,7 @@ from decimal import Decimal
 import re
 import db_Connection as dbconn
 
+
 log = dbconn.getLogger() 
 class CustomJSONEncoder(json.JSONEncoder):
     """ Custom JSON Encoder that converts datetime objects to strings. """
@@ -30,6 +31,7 @@ def row_to_name_value_pairs(row, cursor_description):
     return [{key: value} for key, value in row_dict.items()]
 
 
+#This section of code takes in the query from the queries.yml file 
 def get_json_from_query( query , connection ):
     with connection.cursor() as cursor:
         cursor.execute(query)
@@ -47,8 +49,8 @@ def getString(results, row, col_name):
     except (IndexError, KeyError):
         return None  # Or handle the error as you prefer
 
+# Executes the query and store results in a list of dictionaries
 def executeQuery( sql_query ): 
-    # Execute the query and store results in a list of dictionaries
     dbconn.log(f'executing : {sql_query}')
     connection = dbconn.getMySQLConnection()
     cursor = connection.cursor() 
@@ -59,7 +61,7 @@ def executeQuery( sql_query ):
     return results 
 
 
-# Function to replace variables in the query
+# Function to replaces variables in the query
 def replace_variables(text, var_dict):
     # Replace each variable with its value
     if var_dict == None:
@@ -81,16 +83,8 @@ def list_to_dict(lst):
         elif 'query' in item:
             result.update(list_to_dict(item['query']))
     return result   
-       
 
-
-def execute_sql(sql):
-    # Here, you would execute your SQL query using a database connection.
-    # For demonstration, we'll just return a string
-    return { 'col': 'value'}
-
-
-
+# 
 def process_queries(queries, results=None, row=None):
     if results is None:
         results = {}

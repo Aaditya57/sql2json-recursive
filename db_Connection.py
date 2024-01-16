@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 
 
+# Loads environment variables from a .env file into the environment.
 load_dotenv()
 
 host = os.getenv("host")
@@ -15,6 +16,7 @@ user = os.getenv("user")
 password = os.getenv("password")
 port = os.getenv("port")
 
+# Logging Function, used 
 def log( string ): 
     log = getLogger() 
     log.debug( string )  
@@ -30,13 +32,9 @@ def getLogger():
     logging.basicConfig(level=numeric_level, format='%(asctime)s - %(levelname)s    - %(message)s')
     logger = logging.getLogger()
     
-    # file_handler = logging.FileHandler(log_file)
-    # file_handler.setFormatter(logging.Formatter(log_format))
-    # logger.addHandler(file_handler)     
-    
     return logger 
 
-
+# Using the credentials in the .env file, the function will establish a SQL connection 
 def getMySQLConnection():
     # Connect mySQL Datbase 
     log = getLogger() 
