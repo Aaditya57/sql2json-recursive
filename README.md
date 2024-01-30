@@ -1,5 +1,5 @@
 # sql2json-recursive
-The program Transforms complex SQL queries into detailed branched JSON structures.
+Specifically designed to transform complex SQL queries into detailed, branched JSON structures. This is particularly useful in scenarios where modern databases, despite their capabilities to generate JSON from SQL directly, fall short in creating intricately branched JSON data. Our tool excels in situations requiring a deep dive into master data, seamlessly branching out across various tables and systems to fetch and organize branch-specific data.
 
 ## Getting Started
 
